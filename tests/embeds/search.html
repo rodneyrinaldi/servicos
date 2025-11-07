@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste de Widget Embedável (Simulação de Cliente)</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background-color: #f4f4f9;
+        }
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        .widget-box {
+            border: 2px dashed #007bff;
+            padding: 20px;
+            margin-top: 30px;
+            text-align: center;
+        }
+        iframe {
+            width: 100%;
+            height: 450px; 
+            border: none;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Site do Escritório Jurídico Exemplo</h1>
+        <p>Prezado cliente, use a ferramenta abaixo para verificar se existem comunicações judiciais disponíveis para sua OAB.</p>
+
+        <h2>Widget de Pesquisa Embedado (iFrame)</h2>
+
+        <div class="widget-box">
+            
+            <iframe 
+                src="http://localhost:3000/widget/embed" 
+                title="Task Pilot Search Widget"
+                ></iframe>
+            
+            <p style="margin-top: 15px; font-size: 0.9em; color: #666;">
+                Widget fornecido pelo Task Pilot.
+            </p>
+        </div>
+        
+        <p style="margin-top: 40px;">
+            Este é o restante do conteúdo da página do cliente. A pesquisa está totalmente isolada no iFrame.
+        </p>
+    </div>
+
+</body>
+</html>

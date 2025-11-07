@@ -1,0 +1,32 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//TaskPilot//PJE Communications v1.0//BR
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:1762336255861-1096764-25.2023.8.26.0002@taskpilot.com.br
+DTSTAMP:20251105T095055Z
+DTSTART:20251105T120000Z
+DTEND:20251105T130000Z
+SUMMARY:Processo Judicial: 1096764-25.2023.8.26.0002
+DESCRIPTION:Descrição: Intimação - Processo 1096764-25.2023.8.26.0002 - Cumprimento de Sentença de Obrigação de Prestar Alimentos - Alimentos - M.F.N.L.M.  - L.F.N.M.  - Vistos. Após o trânsito em julgado da sentença de fls. 152\, cujos embargos foram apreciados a fls. 162\, expeça-se certidão de honorários (registro geral de indicação a fls. 10/11). Oportunamente\, arquivem-se os autos. Int. - ADV: RODNEY RINALDI TONELLI (OAB 417198/SP)\, RODNEY RINALDI TONELLI (OAB 417198/SP)\n\nAPI PJe - Acompanhamento de processo judicial via sistema eletrônico.
+LOCATION:Tribunal de Justiça de São Paulo - Online
+STATUS:NEEDS-ACTION
+PRIORITY:1
+CLASS:PUBLIC
+ORGANIZER;CN=TaskPilot:mailto:contato@taskpilot.com.br
+END:VEVENT
+BEGIN:VEVENT
+UID:1762336255861-1077903-51.2024.8.26.0100@taskpilot.com.br
+DTSTAMP:20251105T095055Z
+DTSTART:20251105T120000Z
+DTEND:20251105T130000Z
+SUMMARY:Processo Judicial: 1077903-51.2024.8.26.0100
+DESCRIPTION:Descrição: Intimação - Processo 1077903-51.2024.8.26.0100 - Procedimento Comum Cível - Imissão - Romeu Guedes da Silva e outro - Carlos Sousa da Silva -  - Cilene dos Santos Sousa da Silva -  - Raimundo Nonato Gomes da Silva  - Diante do exposto\, reconheço a extinção do usufruto dos imóveis descritos na petição inicial e JULGO PROCEDENTE O PEDIDO para o fim de deferir o pedido de imissão de posse. Concedo o prazo de 15 dias para desocupação voluntária dos imóveis\, a contar da publicação desta sentença no DEJESP. Decorrido o prazo\, certifique-se e expeça-se o mandado de imissão de posse\, ficando autorizado arrombamento e auxílio da Polícia Militar na hipótese de resistência. Sucumbentes os réus\, arcarão\, solidariamente\, com o pagamento das despesas processuais e dos honorários advocatícios devidos ao patrono da parte adversa\, que fixo em 10% do valor da causa. P. I. C. - ADV: RODNEY RINALDI TONELLI (OAB 417198/SP)\, APOLLO DE CARVALHO SAMPAIO (OAB 109708/SP)\, APOLLO DE CARVALHO SAMPAIO (OAB 109708/SP)\, RODNEY RINALDI TONELLI (OAB 417198/SP)\, APOLLO DE CARVALHO SAMPAIO (OAB 109708/SP)\, FABIANA FERNANDES FABRICIO (OAB 214508/SP)\, FABIANA FERNANDES FABRICIO (OAB 214508/SP)\, FABIANA FERNANDES FABRICIO (OAB 214508/SP)\n\nAPI PJe - Acompanhamento de processo judicial via sistema eletrônico.
+LOCATION:Tribunal de Justiça de São Paulo - Online
+STATUS:NEEDS-ACTION
+PRIORITY:1
+CLASS:PUBLIC
+ORGANIZER;CN=TaskPilot:mailto:contato@taskpilot.com.br
+END:VEVENT
+END:VCALENDAR

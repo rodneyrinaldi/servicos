@@ -1,0 +1,268 @@
+https://comunicaapi.pje.jus.br/swagger/index.html#/default/get_api_v1_comunicacao
+
+
+curl -X 'GET' \
+  'https://comunicaapi.pje.jus.br/api/v1/comunicacao?numeroOab=417198&ufOab=SP&dataDisponibilizacaoInicio=2025-10-01&dataDisponibilizacaoFim=2025-10-05&pagina=1&itensPorPagina=100' \
+  -H 'accept: application/json'
+
+
+https://comunicaapi.pje.jus.br/api/v1/comunicacao?numeroOab=417198&ufOab=SP&dataDisponibilizacaoInicio=2025-10-01&dataDisponibilizacaoFim=2025-10-05&pagina=1&itensPorPagina=100
+
+
+200 OK
+Response body
+{
+  "status": "success",
+  "message": "Sucesso",
+  "count": 2,
+  "items": [
+    {
+      "id": 420206475,
+      "data_disponibilizacao": "2025-10-01",
+      "siglaTribunal": "TJSP",
+      "tipoComunicacao": "Intimação",
+      "nomeOrgao": "Foro Regional II - Santo Amaro - 2ª Vara de Violência Doméstica e Familiar contra a Mulher",
+      "idOrgao": 93694,
+      "texto": "Processo 1503229-82.2023.8.26.0002 - Ação Penal - Procedimento Ordinário - Leve - VITOR POLICARPO DOS SANTOS - Ante o exposto, JULGO IMPROCEDENTE a pretensão penal deduzida na presente ação e ABSOLVOo réudas imputações contidas na denúncia, com fulcro no artigo 386, inciso VII, do Código de Processo Penal. Custas na forma da lei. Expeça-se certidão de honorários em favor do patrono do réu, se o caso. - ADV: RODNEY RINALDI TONELLI (OAB 417198/SP)",
+      "numero_processo": "15032298220238260002",
+      "meio": "D",
+      "link": "https://www.dje.tjsp.jus.br",
+      "tipoDocumento": "Intimação",
+      "nomeClasse": "AçãO PENAL - PROCEDIMENTO ORDINáRIO",
+      "codigoClasse": "283",
+      "numeroComunicacao": 140240,
+      "ativo": true,
+      "hash": "Lko4Pw1RXBsw8j2uoTGjXoMZbAKq5V",
+      "status": "P",
+      "motivo_cancelamento": null,
+      "data_cancelamento": null,
+      "datadisponibilizacao": "01/10/2025",
+      "meiocompleto": "Diário de Justiça Eletrônico Nacional",
+      "numeroprocessocommascara": "1503229-82.2023.8.26.0002",
+      "destinatarios": [
+        {
+          "nome": "V. P. D. S.",
+          "comunicacao_id": 420206475,
+          "polo": "P"
+        }
+      ],
+      "destinatarioadvogados": [
+        {
+          "id": 710636621,
+          "comunicacao_id": 420206475,
+          "advogado_id": 528077,
+          "created_at": "2025-09-30T16:49:15",
+          "updated_at": "2025-09-30T16:49:15",
+          "advogado": {
+            "id": 528077,
+            "nome": "RODNEY RINALDI TONELLI",
+            "numero_oab": "417198",
+            "uf_oab": "SP"
+          }
+        }
+      ]
+    },
+    {
+      "id": 420206479,
+      "data_disponibilizacao": "2025-10-01",
+      "siglaTribunal": "TJSP",
+      "tipoComunicacao": "Intimação",
+      "nomeOrgao": "Foro Regional II - Santo Amaro - 2ª Vara de Violência Doméstica e Familiar contra a Mulher",
+      "idOrgao": 93694,
+      "texto": "Processo 1503229-82.2023.8.26.0002 - Ação Penal - Procedimento Ordinário - Leve - VITOR POLICARPO DOS SANTOS - Ante o exposto, JULGO IMPROCEDENTE a pretensão penal deduzida na presente ação e ABSOLVOo réudas imputações contidas na denúncia, com fulcro no artigo 386, inciso VII, do Código de Processo Penal. Custas na forma da lei. Expeça-se certidão de honorários em favor do patrono do réu, se o caso. - ADV: RODNEY RINALDI TONELLI (OAB 417198/SP)",
+      "numero_processo": "15032298220238260002",
+      "meio": "D",
+      "link": "https://www.dje.tjsp.jus.br",
+      "tipoDocumento": "Intimação",
+      "nomeClasse": "AçãO PENAL - PROCEDIMENTO ORDINáRIO",
+      "codigoClasse": "283",
+      "numeroComunicacao": 140242,
+      "ativo": true,
+      "hash": "37ay8AkRrOszrXds5Twpbnk64dOjxN",
+      "status": "P",
+      "motivo_cancelamento": null,
+      "data_cancelamento": null,
+      "datadisponibilizacao": "01/10/2025",
+      "meiocompleto": "Diário de Justiça Eletrônico Nacional",
+      "numeroprocessocommascara": "1503229-82.2023.8.26.0002",
+      "destinatarios": [
+        {
+          "nome": "V. P. D. S.",
+          "comunicacao_id": 420206479,
+          "polo": "P"
+        }
+      ],
+      "destinatarioadvogados": [
+        {
+          "id": 710636629,
+          "comunicacao_id": 420206479,
+          "advogado_id": 528077,
+          "created_at": "2025-09-30T16:49:15",
+          "updated_at": "2025-09-30T16:49:15",
+          "advogado": {
+            "id": 528077,
+            "nome": "RODNEY RINALDI TONELLI",
+            "numero_oab": "417198",
+            "uf_oab": "SP"
+          }
+        }
+      ]
+    }
+  ]
+}
+
+Response headers
+ access-control-allow-credentials: true 
+ access-control-allow-origin: * 
+ cache-control: no-cache,private 
+ content-encoding: gzip 
+ content-type: application/json 
+ date: Tue,04 Nov 2025 10:04:51 GMT 
+ strict-transport-security: max-age=31536000; includeSubDomains 
+ vary: Accept-Encoding 
+ via: 1.1 c9f4f3e03e02bdecbc773d053e3de6d2.cloudfront.net (CloudFront) 
+ x-amz-cf-id: 4N9Ps8OHTwyuxsfmn5SH8hMU9hp_3xngmPiSbN2RB7XZL2qSt5vDUQ== 
+ x-amz-cf-pop: GIG52-P2 
+ x-cache: Miss from cloudfront 
+ x-ratelimit-limit: 20 
+ x-ratelimit-remaining: 19
+
+
+
+
+200 OK
+json
+{
+  "status": "string",
+  "message": "string",
+  "count": 0,
+  "items": [
+    {
+      "id": 0,
+      "data_disponibilizacao": "string",
+      "siglaTribunal": "string",
+      "tipoComunicacao": "string",
+      "nomeOrgao": "string",
+      "texto": "string",
+      "numero_processo": "string",
+      "meio": "string",
+      "link": "string",
+      "tipoDocumento": "string",
+      "nomeClasse": "string",
+      "codigoClasse": "string",
+      "numeroComunicacao": 0,
+      "ativo": true,
+      "hash": "string",
+      "datadisponibilizacao": "string",
+      "meiocompleto": "string",
+      "numeroprocessocommascara": "string",
+      "destinatarios": [
+        {
+          "nome": "string",
+          "polo": "string",
+          "comunicacao_id": 0
+        }
+      ],
+      "destinatarioadvogados": [
+        {
+          "id": 0,
+          "comunicacao_id": 0,
+          "advogado_id": 0,
+          "created_at": "string",
+          "updated_at": "string",
+          "advogado": {
+            "id": 0,
+            "nome": "string",
+            "numero_oab": "string",
+            "uf_oab": "string"
+          }
+        }
+      ]
+    }
+  ]
+}
+
+422 Erro negocial
+
+429 Erro por taxa de requisições elevado
+
+
+
+
+
+
+Parameters
+Cancel
+Name	Description
+numeroOab
+string
+(query)
+417198
+ufOab
+string
+(query)
+SP
+nomeAdvogado
+string
+(query)
+nomeAdvogado
+nomeParte
+string
+(query)
+nomeParte
+numeroProcesso
+string
+(query)
+numeroProcesso
+dataDisponibilizacaoInicio
+string
+(query)
+Data inicial de disponibilização da comunicação no diário, no formato yyyy-mm-dd
+
+2025-10-01
+dataDisponibilizacaoFim
+string
+(query)
+Data fim de disponibilização da comunicação no diário, no formato yyyy-mm-dd
+
+2025-10-05
+siglaTribunal
+string
+(query)
+Sigla do Tribunal para filtrar as comunicações
+
+siglaTribunal
+numeroComunicacao
+number
+(query)
+Número de identificação da comunicação
+
+numeroComunicacao
+pagina
+number
+(query)
+Número da página
+
+pagina
+itensPorPagina
+number
+(query)
+Número de itens por página para paginação (valores válidos: 5 e 100)
+
+itensPorPagina
+orgaoId
+number
+(query)
+Identificador interno do órgão requisitante
+
+orgaoId
+meio
+string
+(query)
+"E" para Edital e "D" para Diário Eletrônico
+
+
+--
+
+
+
