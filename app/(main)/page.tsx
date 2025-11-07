@@ -5,6 +5,7 @@ import React from 'react';
 
 // Importações dos Componentes de Layout Global
 // Caminho corrigido: ../../components/ (sai de (main), sai de app, entra em components)
+import Header from '@/components/Header';
 import Footer from '../../components/Footer'; 
 
 // Importações dos Componentes da Feature 'Landing Page'
@@ -25,6 +26,7 @@ export default function Home() {
         <div className="min-h-screen flex flex-col bg-white font-sans">
             
             {/* Seções de conteúdo da Feature Landing Page */}
+            <Header />
             <HeroSection /> 
             <ClientsSection />
             <BenefitsSection />

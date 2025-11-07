@@ -19,17 +19,17 @@ const HeroSection: React.FC = () => (
         <div className="max-w-4xl mx-auto px-4 text-center">
             
             {/* Título Principal */}
-            <h1 className="text-4xl sm:text-5xl font-extrabold text-gray-900 leading-tight">
-                Agendamento de Prazos <span className={GOOGLE_BLUE}>Inteligente</span>
+            <h1 className="text-lg sm:text-5xl font-extrabold text-gray-900 leading-tight">
+                Serviços <span className={GOOGLE_BLUE}>Advocatícios</span>
             </h1>
             <p className="mt-4 text-lg text-gray-600 max-w-3xl mx-auto">
-                Sincronize automaticamente as comunicações judiciais do PJe diretamente com seu calendário.
+                Sincronizações, comunicações judiciais, diversos serviços de automação.
             </p>
 
             {/* Imagem Comercial da Aplicação */}
             <div className="mt-12 mb-12 flex justify-center">
                 <Image
-                    src="/images/app-screenshot.png"
+                    src="/logo.png"
                     alt="Interface da aplicação Task Pilot"
                     width={700}
                     height={450}
@@ -48,8 +48,8 @@ const HeroSection: React.FC = () => (
             </div>
             
             {/* Instruções de integração */}
-            {/* <div className="mt-6 text-center">
-                <a 
+            <div className="mt-12 text-center">
+                {/* <a 
                     // O caminho aponta para o arquivo na pasta 'public'
                     href="/readembed.pdf"
                     // O atributo 'download' força o navegador a baixar o arquivo em vez de navegá-lo
@@ -60,10 +60,7 @@ const HeroSection: React.FC = () => (
                     aria-label="Baixar guia de integração do widget Task Pilot"
                 >
                     Baixar Guia de Integração para Desenvolvedores (PDF)
-                </a>
-            </div> */}
-            {/* Link para Visualização do Guia de Integração */}
-            <div className="mt-6 text-center">
+                </a>} */}
                 <a
                     // O caminho aponta para o arquivo na pasta 'public'
                     href="/pjenotifications-embed.html"
@@ -72,7 +69,18 @@ const HeroSection: React.FC = () => (
                     // Acessibilidade (caso o linter reclame de links sem descrição)
                     aria-label="Visualizar guia de integração do widget Task Pilot"
                 >
-                    Guia de Integração para Desenvolvedores
+                    Guia de Integração
+                </a>
+                <span className="mx-2 text-gray-400"> | </span>
+                <a
+                    // O caminho aponta para o arquivo na pasta 'public'
+                    href="https://r2embed.vercel.app"
+                    // Estilo simples e discreto
+                    className="text-sm text-blue-600 hover:text-blue-800 underline transition-colors"
+                    // Acessibilidade (caso o linter reclame de links sem descrição)
+                    aria-label="Visualizar guia de integração do widget Task Pilot"
+                >
+                    Visualizar Integração
                 </a>
             </div>
 
