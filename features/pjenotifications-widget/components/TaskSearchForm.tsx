@@ -158,7 +158,7 @@ const TaskSearchForm: React.FC<TaskSearchFormProps> = ({ primaryColor = 'blue-60
                             https://servicos.adv.br
                         </p>
                     </a>                              
-                    <p className="mt-6text-xs text-center text-gray-400">
+                    <p className="mt-6 text-xs text-center text-gray-400">
                         R2S Rodney Rinaldi Soluções - Notificações PJe
                     </p>
                 </>   
