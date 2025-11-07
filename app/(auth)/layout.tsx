@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 // Metadados específicos para páginas de autenticação (opcional)
 export const metadata = {
-  title: 'Autenticação | Task Pilot',
+  title: 'Autenticação | Serviços Advocatícios',
   description: 'Acesse ou crie sua conta para monitorar notificações PJe.',
 };
 
@@ -25,10 +25,10 @@ const AuthLayout = ({ children }: { children: React.ReactNode }) => {
         <div className="text-center mb-6">
             <Link href="/" className="flex justify-center items-center text-3xl font-extrabold text-gray-900">
                 {/* 🚨 Substitua pela importação real do seu Logo se quiser usá-lo */}
-                <span className="text-blue-600">Task Pilot</span>
+                <span className="text-blue-600">Serviços Advocatícios</span>
             </Link>
             <h2 className="mt-4 text-xl font-medium text-gray-600">
-                Acesse sua área de notificações
+                Acesse sua área de usuário
             </h2>
         </div>
         
@@ -38,7 +38,7 @@ const AuthLayout = ({ children }: { children: React.ReactNode }) => {
 
       {/* Rodapé de Acessibilidade/Ajuda */}
       <div className="mt-8 text-sm text-center text-gray-500">
-        <p>Precisa de ajuda? <Link href="/Contact" className="text-blue-600 hover:underline">Fale Conosco</Link></p>
+        <p>Precisa de ajuda? <Link href="/contactus" className="text-blue-600 hover:underline">Fale Conosco</Link></p>
       </div>
 
     </div>

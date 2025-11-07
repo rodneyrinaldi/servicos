@@ -18,11 +18,11 @@ const SignupPage: React.FC = () => {
       <div className="mt-4 text-sm text-center text-gray-600">
         <p>
           Ao se cadastrar, você concorda com nossos{' '}
-          <Link href="/termos-de-uso" className="text-blue-600 hover:text-blue-800 font-medium transition-colors">
+          <Link href="/termsofservice" className="text-blue-600 hover:text-blue-800 font-medium transition-colors">
             Termos de Uso
           </Link>
           {' '}e{' '}
-          <Link href="/politica-de-privacidade" className="text-blue-600 hover:text-blue-800 font-medium transition-colors">
+          <Link href="/privacypolicy" className="text-blue-600 hover:text-blue-800 font-medium transition-colors">
             Política de Privacidade
           </Link>
           .

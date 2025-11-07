@@ -50,6 +50,7 @@ const RegisterForm: React.FC = () => {
         // Se a função register retornar false (erro tratado pelo hook)
         setError('Ocorreu um erro no cadastro. Este email já está em uso ou a senha é muito fraca.');
       }
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (err: any) {
       // Erro inesperado (ex: falha de rede)
       setError(err.message || 'Ocorreu um erro inesperado ao tentar se cadastrar.');
@@ -138,7 +139,7 @@ const RegisterForm: React.FC = () => {
         </button>
       </form>
       
-      <div className="mt-6 text-center text-sm">
+      <div className="mt-6 text-center text-sm text-gray-700">
         <p>
           Já tem uma conta?{' '}
           <Link href="/login" className="text-blue-600 hover:text-blue-800 font-medium transition-colors">

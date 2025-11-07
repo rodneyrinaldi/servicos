@@ -81,24 +81,6 @@ const TaskSearchForm: React.FC<TaskSearchFormProps> = ({ primaryColor = 'blue-60
                     className="w-full sm:w-1/4 p-2 border-none focus:ring-0 rounded-l-2xl text-gray-900 text-center"
                     required
                 />
-                
-
-                
-                {/* OAB UF */}
-                {/* <select
-                    value={oabUf}
-                    title='Unidade Federativa'
-                    onChange={(e) => setOabUf(e.target.value)}
-                    className="w-full sm:w-1/6 p-2 border-none focus:ring-0 text-gray-900 text-center bg-white"
-                    required
-                >
-                    <option value="">UF</option>
-                    {ESTADOS_BRASIL.map((e) => (
-                        <option key={e.uf} value={e.uf}>{e.uf}</option>
-                    ))}
-                </select> */}
-
-
 
                 {/* OAB UF: TROCADO DE SELECT PARA INPUT C/ DATALIST */}
                 <input
@@ -119,13 +101,6 @@ const TaskSearchForm: React.FC<TaskSearchFormProps> = ({ primaryColor = 'blue-60
                         <option key={e.uf} value={e.uf} />
             ))}
                 </datalist>
-
-
-
-
-
-
-
 
                 {/* DATA INICIAL */}
                 <input
@@ -171,10 +146,22 @@ const TaskSearchForm: React.FC<TaskSearchFormProps> = ({ primaryColor = 'blue-60
 
             {/* Créditos no modo embed (Mantenha se necessário) */}
             {isEmbedded && (
-                <p className="mt-4 text-xs text-center text-gray-400">
-                    R2 Tecnologia de busca fornecida por Task Pilot.
-                </p>
-            )}            
+                <>
+                    <p className="mt-4 text-xs text-center text-gray-400">
+                        R2 Tecnologia de busca fornecida por Task Pilot.
+                    </p>                
+                    <a
+                        // O caminho aponta para o arquivo na pasta 'public'
+                        href="https://r2servicos.adv.br"
+                        // Estilo simples e discreto
+                        className="text-sm text-blue-600 hover:text-blue-800 underline transition-colors"
+                        // Acessibilidade (caso o linter reclame de links sem descrição)
+                        aria-label="Visualizar guia de integração do widget Task Pilot"
+                    >
+                        Navegar para ServicosAdvBr
+                    </a> 
+                </>   
+            )}        
             
             {/* DISPLAY DE RESULTADOS */}
             <ResultDisplay state={state} results={results} errorMsg={errorMsg} />
