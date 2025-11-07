@@ -148,18 +148,18 @@ const TaskSearchForm: React.FC<TaskSearchFormProps> = ({ primaryColor = 'blue-60
             {isEmbedded && (
                 <> 
                     <a
-                        href="https://r2servicos.adv.br" 
+                        href="https://servicos.adv.br" 
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-blue-600 hover:text-blue-800 underline transition-colors" 
                         aria-label="Visualizar guia de integração do widget Task Pilot"
                     >
-                        <p className="mt-4 text-xs text-center">
+                        <p className="mt-10 text-xs text-center">
                             https://servicos.adv.br
                         </p>
                     </a>                              
-                    <p className="mt-4 text-xs text-center text-gray-400">
-                        R2 Tecnologia de busca fornecida por Task Pilot.
+                    <p className="mt-6text-xs text-center text-gray-400">
+                        R2S Rodney Rinaldi Soluções - Notificações PJe
                     </p>
                 </>   
             )}        
