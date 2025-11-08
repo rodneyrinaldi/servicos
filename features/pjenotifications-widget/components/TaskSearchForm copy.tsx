@@ -8,6 +8,7 @@ import { useTaskSearch } from '../hooks/useTaskSearch';
 
 // 2. Importa utilidades globais (para o download ICS)
 import { createICSContent } from '../../../lib/ics';
+// import { getTodayDate } from '../../../lib/utils'; // Apenas se não estiver no hook
 
 // 3. Importa dados estáticos
 import { ESTADOS_BRASIL } from '../../landing-page/data'; 
@@ -15,19 +16,14 @@ import { ESTADOS_BRASIL } from '../../landing-page/data';
 // 4. Importa o componente de visualização de resultados
 import ResultDisplay from './ResultDisplay';
 
+// OBS: Removemos os tipos de ProcessoResumo e SearchState, pois eles são manipulados via Hook.
+
 interface TaskSearchFormProps {
     primaryColor?: string; 
     isEmbedded?: boolean; 
-    // 💡 heightClass reintroduzida para controle de altura em desktop/embed
-    heightClass?: string; 
 }
 
-const TaskSearchForm: React.FC<TaskSearchFormProps> = ({ 
-    primaryColor = 'blue-600', 
-    isEmbedded = false,
-    // 💡 heightClass padrão reintroduzida
-    heightClass = 'min-h-[500px] h-full'
-}) => {
+const TaskSearchForm: React.FC<TaskSearchFormProps> = ({ primaryColor = 'blue-600', isEmbedded = false }) => {
     
     // CONSOME A LÓGICA DO HOOK
     const {
@@ -42,10 +38,11 @@ const TaskSearchForm: React.FC<TaskSearchFormProps> = ({
         isDownloadEnabled
     } = useTaskSearch();
 
-    // LÓGICA DE DOWNLOAD
+    // LÓGICA DE DOWNLOAD (Mantida aqui por ser uma ação de UI)
     const handleDownload = useCallback(() => {
         if (!results || results.length === 0) return;
 
+        // const icsContent = createICSContent(results, getTodayDate());
         const icsContent = createICSContent(results);
 
         const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
@@ -63,21 +60,17 @@ const TaskSearchForm: React.FC<TaskSearchFormProps> = ({
     
     
     // --- CLASSES DE ESTILO ---
-    const primaryBgClass = primaryColor.startsWith('bg-') ? primaryColor : `bg-${primaryColor}`;
-    const primaryHoverClass = primaryColor.startsWith('bg-') ? primaryColor.replace('bg-', 'hover:bg-') : `hover:bg-blue-700`;
+    const primaryStyle = primaryColor.startsWith('#') ? `style={{ backgroundColor: '${primaryColor}' }}` : `bg-${primaryColor} hover:bg-blue-700`;
+    const buttonClass = `flex items-center justify-center ${primaryStyle} text-white font-medium px-6 py-3 rounded-full shadow-lg shadow-blue-500/30 transition duration-300 disabled:opacity-50 disabled:shadow-none`;
     
-    const buttonClass = `flex items-center justify-center ${primaryBgClass} ${primaryHoverClass} text-white font-medium px-4 py-2 text-sm rounded-full shadow-lg shadow-blue-500/30 transition duration-300 disabled:opacity-50 disabled:shadow-none sm:px-6 sm:py-3 sm:text-base`;
-    
-    // 💡 Container flex-col e com altura (heightClass) reintroduzida para permitir o flex-1 no ResultDisplay
     const containerClasses = isEmbedded 
-        ? `${heightClass} flex flex-col space-y-3 p-3 border rounded-xl shadow-md bg-white sm:space-y-4 sm:p-4` 
-        : `${heightClass} flex flex-col space-y-3 sm:space-y-4`; 
+        ? "space-y-4 p-4 border rounded-xl shadow-md bg-white" 
+        : "space-y-4";
 
     return (
-        <form onSubmit={handleSearch} className={`w-full ${containerClasses}`}> 
+        <form onSubmit={handleSearch} className={containerClasses}> 
             
-            {/* INPUTS */}
-            <div className={`flex flex-col sm:flex-row items-stretch space-y-2 sm:space-y-0 sm:space-x-3 p-2 bg-white border border-gray-200 rounded-3xl shadow-sm sm:p-3`}>
+            <div className={`flex flex-col sm:flex-row items-center space-y-3 sm:space-y-0 sm:space-x-3 p-3 bg-white border border-gray-200 rounded-3xl shadow-sm`}>
                 
                 {/* OAB NUMERO */}
                 <input
@@ -85,27 +78,28 @@ const TaskSearchForm: React.FC<TaskSearchFormProps> = ({
                     placeholder="Número OAB"
                     value={oabNumero}
                     onChange={(e) => setOabNumero(e.target.value)}
-                    className="w-full sm:flex-1 p-1.5 border-none focus:ring-0 rounded-l-2xl text-gray-900 text-center text-sm sm:text-base"
+                    className="w-full sm:w-1/4 p-2 border-none focus:ring-0 rounded-l-2xl text-gray-900 text-center"
                     required
                 />
 
-                {/* OAB UF */}
+                {/* OAB UF: TROCADO DE SELECT PARA INPUT C/ DATALIST */}
                 <input
                     type="text"
-                    list="uf-options"
+                    list="uf-options" // Liga este input ao datalist abaixo
                     placeholder="UF"
                     value={oabUf}
                     title='Unidade Federativa'
-                    onChange={(e) => setOabUf(e.target.value.toUpperCase())}
-                    className="w-full sm:w-1/5 p-1.5 border-none focus:ring-0 text-gray-900 text-center bg-white uppercase text-sm sm:text-base"
+                    onChange={(e) => setOabUf(e.target.value.toUpperCase())} // 🚨 Garante que seja maiúsculas
+                    className="w-full sm:w-1/6 p-2 border-none focus:ring-0 text-gray-900 text-center bg-white uppercase"
                     required
-                    maxLength={2}
+                    maxLength={2} // Limita a entrada a 2 caracteres
                 />
 
+                {/* DATALIST: Fornece as sugestões para o input acima */}
                 <datalist id="uf-options">
                     {ESTADOS_BRASIL.map((e) => (
                         <option key={e.uf} value={e.uf} />
-                    ))}
+            ))}
                 </datalist>
 
                 {/* DATA INICIAL */}
@@ -114,7 +108,7 @@ const TaskSearchForm: React.FC<TaskSearchFormProps> = ({
                     placeholder="Data Inicial"
                     value={dataInicial}
                     onChange={(e) => setDataInicial(e.target.value)}
-                    className="w-full sm:flex-1 p-1.5 border-none focus:ring-0 text-center text-gray-600 text-sm sm:text-base"
+                    className="w-full sm:w-1/4 p-2 border-none focus:ring-0 text-center text-gray-600"
                     max={dataFinal}
                     required
                 />
@@ -125,16 +119,16 @@ const TaskSearchForm: React.FC<TaskSearchFormProps> = ({
                     placeholder="Data Final"
                     value={dataFinal}
                     onChange={(e) => setDataFinal(e.target.value)}
-                    className="w-full sm:flex-1 p-1.5 border-none focus:ring-0 rounded-r-2xl text-center text-gray-600 text-sm sm:text-base"
+                    className="w-full sm:w-1/4 p-2 border-none focus:ring-0 rounded-r-2xl text-center text-gray-600"
                     min={dataInicial}
                     required
                 />
             </div>
 
             {/* BOTÕES DE AÇÃO */}
-            <div className="flex flex-col sm:flex-row justify-center space-y-2 sm:space-y-0 sm:space-x-4">
+            <div className="flex justify-center space-x-4 pt-2">
                 <button type="submit" className={buttonClass} disabled={state === 'LOADING'}>
-                    <Search className="w-4 h-4 mr-2 sm:w-5 sm:h-5" />
+                    <Search className="w-5 h-5 mr-2" />
                     {state === 'LOADING' ? 'Buscando...' : 'Pesquisar'}
                 </button>
                 
@@ -142,17 +136,17 @@ const TaskSearchForm: React.FC<TaskSearchFormProps> = ({
                     <button 
                         type="button" 
                         onClick={handleDownload} 
-                        className="flex items-center justify-center bg-green-600 hover:bg-green-700 text-white font-medium px-4 py-2 text-sm rounded-full shadow-lg shadow-green-500/30 transition duration-300 sm:px-6 sm:py-3 sm:text-base"
+                        className="flex items-center justify-center bg-green-600 hover:bg-green-700 text-white font-medium px-6 py-3 rounded-full shadow-lg shadow-green-500/30 transition duration-300"
                     >
-                        <Download className="w-4 h-4 mr-2 sm:w-5 sm:h-5" />
+                        <Download className="w-5 h-5 mr-2" />
                         Baixar ICS
                     </button>
                 )}
             </div>
 
-            {/* Créditos no modo embed */}
+            {/* Créditos no modo embed (Mantenha se necessário) */}
             {isEmbedded && (
-                <div className="flex flex-col items-center pt-2">
+                <> 
                     <a
                         href="https://servicos.adv.br" 
                         target="_blank"
@@ -160,26 +154,18 @@ const TaskSearchForm: React.FC<TaskSearchFormProps> = ({
                         className="text-blue-600 hover:text-blue-800 underline transition-colors" 
                         aria-label="Visualizar guia de integração do widget Task Pilot"
                     >
-                        <p className="mt-2 text-xs text-center">
+                        <p className="mt-10 text-xs text-center">
                             https://servicos.adv.br
                         </p>
-                    </a> 
-                    <p className="mt-1 text-xs text-center text-gray-400">
+                    </a>                              
+                    <p className="mt-6 text-xs text-center text-gray-400">
                         R2S Rodney Rinaldi Soluções - Notificações PJe
                     </p>
-                </div>
-            )}
+                </>   
+            )}        
             
             {/* DISPLAY DE RESULTADOS */}
-            {/* 💡 CORREÇÃO FINAL: flex-1 (para ocupar o espaço restante) e scroll (overflow-y-auto) 
-               aplicado APENAS em desktop (sm:overflow-y-auto). No mobile, o scroll é nativo. */}
-            <div className="flex-1 w-full sm:overflow-y-auto">
-                <ResultDisplay 
-                    state={state} 
-                    results={results} 
-                    errorMsg={errorMsg} 
-                />
-            </div>
+            <ResultDisplay state={state} results={results} errorMsg={errorMsg} />
         </form>
     );
 };
