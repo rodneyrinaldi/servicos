@@ -85,7 +85,8 @@ const TaskSearchForm: React.FC<TaskSearchFormProps> = ({
                     placeholder="Número OAB"
                     value={oabNumero}
                     onChange={(e) => setOabNumero(e.target.value)}
-                    className="w-full sm:flex-1 p-1.5 border-none focus:ring-0 rounded-l-2xl text-gray-900 text-center text-sm sm:text-base"
+                    // CLASSE ALTERADA: Mudou de text-center para text-left (ou implícito)
+                    className="w-full sm:flex-1 p-1.5 border-none focus:ring-0 rounded-l-2xl text-gray-900 text-left text-sm sm:text-base"
                     required
                 />
 
@@ -97,7 +98,8 @@ const TaskSearchForm: React.FC<TaskSearchFormProps> = ({
                     value={oabUf}
                     title='Unidade Federativa'
                     onChange={(e) => setOabUf(e.target.value.toUpperCase())}
-                    className="w-full sm:w-1/5 p-1.5 border-none focus:ring-0 text-gray-900 text-center bg-white uppercase text-sm sm:text-base"
+                    // CLASSE ALTERADA: Mudou de text-center para text-left (ou implícito)
+                    className="w-full sm:w-1/5 p-1.5 border-none focus:ring-0 text-gray-900 text-left bg-white uppercase text-sm sm:text-base"
                     required
                     maxLength={2}
                 />
@@ -114,7 +116,8 @@ const TaskSearchForm: React.FC<TaskSearchFormProps> = ({
                     placeholder="Data Inicial"
                     value={dataInicial}
                     onChange={(e) => setDataInicial(e.target.value)}
-                    className="w-full sm:flex-1 p-1.5 border-none focus:ring-0 text-center text-gray-600 text-sm sm:text-base"
+                    // text-center removido, usando implicitamente text-left
+                    className="w-full sm:flex-1 p-1.5 border-none focus:ring-0 text-left text-gray-900 text-sm sm:text-base"
                     max={dataFinal}
                     required
                 />
@@ -125,7 +128,8 @@ const TaskSearchForm: React.FC<TaskSearchFormProps> = ({
                     placeholder="Data Final"
                     value={dataFinal}
                     onChange={(e) => setDataFinal(e.target.value)}
-                    className="w-full sm:flex-1 p-1.5 border-none focus:ring-0 rounded-r-2xl text-center text-gray-600 text-sm sm:text-base"
+                    // text-center removido, usando implicitamente text-left
+                    className="w-full sm:flex-1 p-1.5 border-none focus:ring-0 rounded-r-2xl text-left text-gray-900 text-sm sm:text-base"
                     min={dataInicial}
                     required
                 />
@@ -172,7 +176,7 @@ const TaskSearchForm: React.FC<TaskSearchFormProps> = ({
             
             {/* DISPLAY DE RESULTADOS */}
             {/* 💡 CORREÇÃO FINAL: flex-1 (para ocupar o espaço restante) e scroll (overflow-y-auto) 
-               aplicado APENAS em desktop (sm:overflow-y-auto). No mobile, o scroll é nativo. */}
+                aplicado APENAS em desktop (sm:overflow-y-auto). No mobile, o scroll é nativo. */}
             <div className="flex-1 w-full sm:overflow-y-auto">
                 <ResultDisplay 
                     state={state} 
