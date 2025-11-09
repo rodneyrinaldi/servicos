@@ -1,10 +1,3 @@
-// types/index.ts
-// Tipos globais e modelos de dados usados em múltiplas features.
-
-import React from 'react';
-
-// --- Tipagens de Processo/Resultado ---
-
 export type ProcessoResumo = { 
     /** Data da movimentação no formato YYYY-MM-DD */
     data: string; 
@@ -42,12 +35,17 @@ export type Depoimento = {
     texto: string;
 };
 
-export type Beneficio = {
-    /** Componente React (normalmente um ícone Lucide) */
-    icone: React.ReactNode; 
+export interface Beneficio {
+    icone: string;
+    cor: string;
     titulo: string;
     descricao: string;
-};
+}
+
+export interface ClientLogo {
+    nome: string;
+    file: string; // O nome do arquivo (ex: 'souza-adv.png')
+}
 
 // --- Outros Tipos Globais ---
 

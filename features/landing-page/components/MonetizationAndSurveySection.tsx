@@ -14,7 +14,7 @@ const MonetizationAndSurveySection: React.FC = () => (
                     Impulsione seu Negócio
                 </h3>
                 <p className="text-gray-600 mb-6">
-                    Espaço reservado para parcerias e ferramentas jurídicas essenciais.
+                    Espaço reservado para parcerias e ferramentas.
                 </p>
                 <div className="h-32 bg-yellow-50 border-2 border-yellow-300 border-dashed flex items-center justify-center text-yellow-700 font-medium rounded-lg">
                     [Banner de Parceiro]

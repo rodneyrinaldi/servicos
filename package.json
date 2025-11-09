@@ -1,13 +1,16 @@
 {
   "name": "task-pilot",
   "version": "0.1.0",
-  "private": true,  "scripts": {
-      "dev": "next dev",
-      "build": "next build",
-      "start": "next start",
-      "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
   },
   "dependencies": {
+    "embla-carousel-autoplay": "^8.6.0",
+    "embla-carousel-react": "^8.6.0",
     "lucide-react": "^0.552.0",
     "next": "16.0.1",
     "react": "19.2.0",

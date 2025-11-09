@@ -1,24 +1,36 @@
-// features/landing-page/data.tsx 
-// Contém constantes de estilo e dados estáticos ESPECÍFICOS da Landing Page.
+// features/landing-page/data.ts
+// Contém dados estáticos ESPECÍFICOS da Landing Page.
 
-import React from 'react'; 
-import { CheckCircle, Zap, Users } from 'lucide-react';
+// Importação dos tipos
+import { 
+    EstadoUF, 
+    Depoimento, 
+    Beneficio, 
+    ClientLogo // Importado o tipo necessário
+} from '../../types'; 
 
-// Tipos importados da pasta raiz 'types/'
-import { EstadoUF, Cliente, Depoimento, Beneficio } from '../../types/index'; 
+// --- Constantes de Estilo Simples (Classes Tailwind) ---
 
-// Cores e Constantes Estáticas de Estilo
-export const GOOGLE_BLUE = 'text-blue-600'; 
+// Objeto interno para organização das cores
+const TAILWIND_COLORS = {
+    BLUE: 'text-blue-600',
+    ORANGE: 'text-orange-500',
+    GREEN: 'text-green-500',
+};
+
+// CORRIGIDO: Re-exportando as constantes de cor faltantes
+export const GOOGLE_BLUE = TAILWIND_COLORS.BLUE;
+export const GOOGLE_ORANGE = TAILWIND_COLORS.ORANGE;
+export const GOOGLE_GREEN = TAILWIND_COLORS.GREEN;
+
 export const GOOGLE_SHADOW = 'shadow-md hover:shadow-lg'; 
 
-// --- Dados Estáticos (Clientes, Depoimentos, etc.) ---
+// --- Dados Estáticos ---
 
-// Lista completa dos 27 estados (26 estados + DF).
-// Ordem: SP fixo na primeira posição, seguido pelos demais em ordem alfabética por nome.
+// Lista completa dos 27 estados (mantida)
 export const ESTADOS_BRASIL: EstadoUF[] = [
     // 1. Destaque: São Paulo
     { uf: 'SP', nome: 'São Paulo' }, 
-    
     // 2. Ordem alfabética pelo nome (Acre até Tocantins)
     { uf: 'AC', nome: 'Acre' }, 
     { uf: 'AL', nome: 'Alagoas' },
@@ -48,39 +60,44 @@ export const ESTADOS_BRASIL: EstadoUF[] = [
     { uf: 'TO', nome: 'Tocantins' },
 ];
 
-export const CLIENTES: Cliente[] = [
-    { nome: "Advocacia Souza", logo: "https://placehold.co/120x60/4285F4/ffffff?text=Souza+Adv" }, 
-    { nome: "Jurídico Lima", logo: "https://placehold.co/120x60/34A853/ffffff?text=Lima+Jur" }, 
-    { nome: "Câmara & Costa", logo: "https://placehold.co/120x60/FBBC05/ffffff?text=Camara+%26+Co" }, 
-    { nome: "Escritório Silva", logo: "https://placehold.co/120x60/EA4335/ffffff?text=Silva+ES" }, 
+// ARRAY DE LOGOS para o Carrossel (Tipado com ClientLogo[])
+export const CLIENT_LOGOS: ClientLogo[] = [
+    { nome: "102ª Subseção Sto Amaro", file: "102subsecao.png" }, 
+    { nome: "Adivocacia Rodney Rinaldi", file: "rodneyrinaldi.png" }, 
+    { nome: "Advogado João Batista", file: "joaobatista.png" }, 
+    { nome: "Advogado Renato Conilho", file: "renatoconilho.png" }, 
 ];
 
 export const DEPOIMENTOS: Depoimento[] = [
     {
-        nome: "Dr. Ana Costa",
-        cargo: "Advogada Autônoma",
+        nome: "Dr. Rodney Rinaldi",
+        cargo: "Advogado Autônomo",
         texto: "O Task Pilot transformou a maneira como gerencio prazos. Essencial para a advocacia moderna!",
     },
     {
-        nome: "Felipe Almeida",
-        cargo: "Gestor de Equipe Jurídica",
+        nome: "Dr.João Batista",
+        cargo: "Advogado Autônomo",
         texto: "A integração com o PJe é impecável. Nossa equipe economiza horas valiosas que antes eram gastas em cadastros manuais.",
     },
 ];
 
+// Benefícios (agora sem JSX e tipados)
 export const BENEFICIOS: Beneficio[] = [
     { 
-        icone: <CheckCircle className={`w-6 h-6 ${GOOGLE_BLUE}`} />,
+        icone: 'CheckCircle', 
+        cor: GOOGLE_BLUE, // Usando a constante re-exportada
         titulo: "Agendamento Automático",
         descricao: "Transforme comunicações judiciais em eventos no calendário com um clique, sem erros manuais.",
     },
     { 
-        icone: <Zap className="w-6 h-6 text-orange-500" />,
+        icone: 'Zap',
+        cor: GOOGLE_ORANGE,
         titulo: "Redução de Riscos",
         descricao: "Minimize a chance de perder prazos cruciais ao automatizar a captura de dados diretamente do PJe.",
     },
     { 
-        icone: <Users className="w-6 h-6 text-green-500" />,
+        icone: 'Users',
+        cor: GOOGLE_GREEN,
         titulo: "Foco no Cliente",
         descricao: "Libere o tempo da sua equipe para se concentrar em estratégia e atendimento, e não em tarefas repetitivas.",
     },

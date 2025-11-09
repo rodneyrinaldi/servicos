@@ -25,7 +25,7 @@ interface TaskSearchFormProps {
 const TaskSearchForm: React.FC<TaskSearchFormProps> = ({ 
     primaryColor = 'blue-600', 
     isEmbedded = false,
-    heightClass = 'min-h-[500px] h-full' 
+    heightClass = 'min-h-[400px] h-full' 
 }) => {
     
     // CONSOME A LÓGICA DO HOOK

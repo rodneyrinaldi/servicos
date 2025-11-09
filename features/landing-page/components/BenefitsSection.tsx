@@ -5,7 +5,7 @@ import { GOOGLE_SHADOW, BENEFICIOS } from '../data'; // Caminho ajustado: agora 
 // pois o componente 'data.tsx' já exporta os ícones como React.ReactNode dentro do array BENEFICIOS.
 
 const BenefitsSection: React.FC = () => (
-    <section className="py-16 bg-gray-50 border-t border-gray-200">
+    <section className="py-16 bg-white">
         <div className="max-w-6xl mx-auto px-4">
             <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">
                 Vantagens do Task Pilot
