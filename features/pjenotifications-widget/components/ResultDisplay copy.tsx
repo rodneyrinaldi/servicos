@@ -36,7 +36,7 @@ const ResultDisplay: React.FC<ResultDisplayProps> = ({ state, results, errorMsg 
 
         case 'RESULTS':
             if (results.length === 0) {
-                return (
+                 return (
                     <div className="p-6 bg-yellow-50 border border-yellow-300 rounded-lg text-center">
                         <span className="text-yellow-800 font-medium">Nenhuma comunicação encontrada no período para esta OAB.</span>
                     </div>
@@ -49,8 +49,7 @@ const ResultDisplay: React.FC<ResultDisplayProps> = ({ state, results, errorMsg 
                         <CalendarCheck className="w-5 h-5 mr-2 fill-green-500 text-white" />
                         <span>{results.length} Prazos Encontrados:</span>
                     </div>
-                    {/* AQUI ESTÁ A ALTERAÇÃO: Removidas as classes max-h-60 e overflow-y-auto */}
-                    <ul className="space-y-3 pr-2"> 
+                    <ul className="space-y-3 max-h-60 overflow-y-auto pr-2">
                         {results.map((p, index) => (
                             <li key={index} className="p-3 bg-white border border-gray-200 rounded-lg shadow-sm text-sm">
                                 <span className="font-semibold text-gray-800 mr-2">{p.data}</span>

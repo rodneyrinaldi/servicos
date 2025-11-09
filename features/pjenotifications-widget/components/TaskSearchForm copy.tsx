@@ -25,7 +25,8 @@ interface TaskSearchFormProps {
 const TaskSearchForm: React.FC<TaskSearchFormProps> = ({ 
     primaryColor = 'blue-600', 
     isEmbedded = false,
-    heightClass = 'min-h-[500px] h-full' 
+    // 💡 heightClass padrão reintroduzida
+    heightClass = 'min-h-[500px] h-full'
 }) => {
     
     // CONSOME A LÓGICA DO HOOK
@@ -67,13 +68,10 @@ const TaskSearchForm: React.FC<TaskSearchFormProps> = ({
     
     const buttonClass = `flex items-center justify-center ${primaryBgClass} ${primaryHoverClass} text-white font-medium px-4 py-2 text-sm rounded-full shadow-lg shadow-blue-500/30 transition duration-300 disabled:opacity-50 disabled:shadow-none sm:px-6 sm:py-3 sm:text-base`;
     
-    // O container principal não terá altura mínima, a menos que 'isEmbedded' seja true.
+    // 💡 Container flex-col e com altura (heightClass) reintroduzida para permitir o flex-1 no ResultDisplay
     const containerClasses = isEmbedded 
         ? `${heightClass} flex flex-col space-y-3 p-3 border rounded-xl shadow-md bg-white sm:space-y-4 sm:p-4` 
-        : `flex flex-col space-y-3 sm:space-y-4`; 
-
-    // Variável para controlar se a área de resultados deve ser exibida/expandida
-    const shouldDisplayResultsArea = state !== 'IDLE' || results.length > 0 || errorMsg;
+        : `${heightClass} flex flex-col space-y-3 sm:space-y-4`; 
 
     return (
         <form onSubmit={handleSearch} className={`w-full ${containerClasses}`}> 
@@ -87,6 +85,7 @@ const TaskSearchForm: React.FC<TaskSearchFormProps> = ({
                     placeholder="Número OAB"
                     value={oabNumero}
                     onChange={(e) => setOabNumero(e.target.value)}
+                    // CLASSE ALTERADA: Mudou de text-center para text-left (ou implícito)
                     className="w-full sm:flex-1 p-1.5 border-none focus:ring-0 rounded-l-2xl text-gray-900 text-left text-sm sm:text-base"
                     required
                 />
@@ -99,6 +98,7 @@ const TaskSearchForm: React.FC<TaskSearchFormProps> = ({
                     value={oabUf}
                     title='Unidade Federativa'
                     onChange={(e) => setOabUf(e.target.value.toUpperCase())}
+                    // CLASSE ALTERADA: Mudou de text-center para text-left (ou implícito)
                     className="w-full sm:w-1/5 p-1.5 border-none focus:ring-0 text-gray-900 text-left bg-white uppercase text-sm sm:text-base"
                     required
                     maxLength={2}
@@ -116,6 +116,7 @@ const TaskSearchForm: React.FC<TaskSearchFormProps> = ({
                     placeholder="Data Inicial"
                     value={dataInicial}
                     onChange={(e) => setDataInicial(e.target.value)}
+                    // text-center removido, usando implicitamente text-left
                     className="w-full sm:flex-1 p-1.5 border-none focus:ring-0 text-left text-gray-900 text-sm sm:text-base"
                     max={dataFinal}
                     required
@@ -127,6 +128,7 @@ const TaskSearchForm: React.FC<TaskSearchFormProps> = ({
                     placeholder="Data Final"
                     value={dataFinal}
                     onChange={(e) => setDataFinal(e.target.value)}
+                    // text-center removido, usando implicitamente text-left
                     className="w-full sm:flex-1 p-1.5 border-none focus:ring-0 rounded-r-2xl text-left text-gray-900 text-sm sm:text-base"
                     min={dataInicial}
                     required
@@ -173,12 +175,9 @@ const TaskSearchForm: React.FC<TaskSearchFormProps> = ({
             )}
             
             {/* DISPLAY DE RESULTADOS */}
-            {/* 💡 CORREÇÃO FINAL: Usaremos h-auto e removendo max-height e overflow para que cresça ilimitadamente */}
-            <div className={`w-full transition-all duration-300 ease-in-out ${
-                shouldDisplayResultsArea 
-                    ? 'mt-4 h-auto' // Exibe e permite o crescimento de altura natural (sem limites)
-                    : 'max-h-0 overflow-hidden' // Esconde totalmente
-            }`}>
+            {/* 💡 CORREÇÃO FINAL: flex-1 (para ocupar o espaço restante) e scroll (overflow-y-auto) 
+                aplicado APENAS em desktop (sm:overflow-y-auto). No mobile, o scroll é nativo. */}
+            <div className="flex-1 w-full sm:overflow-y-auto">
                 <ResultDisplay 
                     state={state} 
                     results={results} 
