@@ -16,7 +16,7 @@ import { GOOGLE_BLUE } from '../data';
 
 const HeroSection: React.FC = () => (
     <>
-        <section className="py-16 md:py-24 bg-white">
+        <section className="py-6 md:py-12 bg-white">
             <div className="max-w-4xl mx-auto px-4 text-center">  
                 {/* Título Principal */}
                 <h1 className="text-lg sm:text-5xl font-extrabold text-gray-900 leading-tight">
@@ -29,10 +29,10 @@ const HeroSection: React.FC = () => (
                 {/* Imagem Comercial da Aplicação */}
                 <div className="mt-12 mb-12 flex justify-center">
                     <Image
-                        src="/logo.png"
+                        src="/images/imagem.png"
                         alt="Interface da aplicação Task Pilot"
-                        width={700}
-                        height={450}
+                        width={350}
+                        height={225}
                         priority={true}
                         className="bg-white"
                     />
@@ -40,20 +40,20 @@ const HeroSection: React.FC = () => (
             </div>
         </section>
 
-        <section className="py-16 md:py-24 bg-gray-50 border-t border-gray-200">
+        <section className="py-8 md:py-24 bg-gray-50 border-t border-gray-200">
             <div className="max-w-4xl mx-auto px-4 text-center">                
                 
                 {/* Logo do Task Pilot */}
-                <TaskPilotLogo className="mx-auto mb-8 w-60 h-16" />
+                <TaskPilotLogo className="mx-auto mb-2 w-60 h-16" />
 
                 {/* Formulário de Busca */}
-                <div className="mt-10">
+                <div className="mt-2">
                     {/* O HeroSection passa a ser o único local que renderiza TaskSearchForm na Landing Page */}
                     <TaskSearchForm />
                 </div>
                 
                 {/* Instruções de integração */}
-                <div className="mt-10 text-center">
+                <div className="mt-2 text-center">
                     <a
                         // O caminho aponta para o arquivo na pasta 'public'
                         href="/pjenotifications-embed.html"
@@ -67,7 +67,7 @@ const HeroSection: React.FC = () => (
                     <span className="mx-2 text-gray-400"> | </span>
                     <a
                         // O caminho aponta para o arquivo na pasta 'public'
-                        href="https://r2embed.vercel.app"
+                        href="https://taskpilot.rrs.net.br"
                         // Estilo simples e discreto
                         className="text-sm text-blue-600 hover:text-blue-800 underline transition-colors"
                         // Acessibilidade (caso o linter reclame de links sem descrição)

@@ -23,20 +23,16 @@ const Header: React.FC = () => {
         };
     }, [scrolled]); 
 
-    // 2. Classes de Estilo (Mantidas)
+    // 2. Classes de Estilo (textAndIconColor REMOVIDA)
     const headerBackgroundInitial = 'bg-white/30 backdrop-blur-none border-b border-transparent shadow-none';
     const headerBackgroundScrolled = 'bg-white/95 backdrop-blur-sm shadow-md border-b border-gray-200';
+    // REMOVIDA: const textAndIconColor = 'text-gray-800'; 
 
     // 3. CLASSE DE ALTURA DINÂMICA (Mantida)
     let headerHeightClass = 'h-16'; 
     if (!scrolled) {
         headerHeightClass += ' md:h-32';
     }
-
-    // 4. CLASSE DE REDUÇÃO DA LOGO (NOVIDADE)
-    // Se a tela for rolada (scrolled é true), aplica scale-70 (redução de 30%).
-    // Adiciona classes de transição para suavizar a animação.
-    const logoScaleClass = `transition-transform duration-300 ease-in-out ${scrolled ? 'transform scale-70' : ''}`;
 
     return (
         <header
@@ -51,24 +47,19 @@ const Header: React.FC = () => {
             >
                 
                 <div className="shrink-0 flex items-center">
-                    {/* O Link precisa estar `h-full` para centralizar verticalmente no header */}
-                    <Link href="/" aria-label="Home" className="flex items-center space-x-2 h-full">
+                    <Link href="/" aria-label="Home" className="flex items-center space-x-2">
                         
-                        {/* 🌟 LOGO PARA TELA GRANDE (DESKTOP) 🌟 */}
+                        {/* LOGO PARA TELA GRANDE (DESKTOP) */}
                         <Image
                             src="/images/logow.png" 
                             alt="Logo - Versão Completa"
-                            // Combinação de classes:
-                            // 1. Esconde/Mostra: `hidden sm:block`
-                            // 2. Redimensionamento Condicional: ${logoScaleClass}
-                            className={`hidden sm:block ${logoScaleClass}`} 
-                            width={225} // Ajuste o valor da largura base (100% no estado não-rolado)
-                            height={60}  // Ajuste o valor da altura base
+                            className="hidden sm:block" 
+                            width={240} 
+                            height={64}  
                             priority 
                         />
                         
-                        {/* 🌟 LOGO PARA TELA PEQUENA (MOBILE) 🌟 */}
-                        {/* A logo mobile (logom.png) não precisa de redimensionamento */}
+                        {/* LOGO PARA TELA PEQUENA (MOBILE) */}
                         <Image
                             src="/images/logom.png" 
                             alt="Logo - Versão Mobile"

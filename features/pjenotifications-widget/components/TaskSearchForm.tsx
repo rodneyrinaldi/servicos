@@ -78,7 +78,8 @@ const TaskSearchForm: React.FC<TaskSearchFormProps> = ({
     return (
         <form onSubmit={handleSearch} className={`w-full ${containerClasses}`}> 
             
-            {/* INPUTS */}
+            {/* INPUTS - O DIV EXTERNO MANTÉM W-FULL (a borda) */}
+            {/* Foi adicionado space-y-2 para criar espaçamento entre os inputs no mobile */}
             <div className={`flex flex-col sm:flex-row items-stretch space-y-2 sm:space-y-0 sm:space-x-3 p-2 bg-white border border-gray-200 rounded-3xl shadow-sm sm:p-3`}>
                 
                 {/* OAB NUMERO */}
@@ -87,7 +88,9 @@ const TaskSearchForm: React.FC<TaskSearchFormProps> = ({
                     placeholder="Número OAB"
                     value={oabNumero}
                     onChange={(e) => setOabNumero(e.target.value)}
-                    className="w-full sm:flex-1 p-1.5 border-none focus:ring-0 rounded-l-2xl text-gray-900 text-left text-sm sm:text-base"
+                    // 💡 MODIFICAÇÃO: rounded-xl no mobile. Mantém flex-1 e arredondamento lateral no desktop.
+                    // Adicionado w-5/6 mx-auto para padding em mobile, sm:w-full sm:flex-1 no desktop.
+                    className="w-5/6 mx-auto sm:w-full sm:flex-1 p-1.5 border-none focus:ring-0 text-gray-900 text-left text-sm sm:text-base rounded-xl sm:rounded-l-2xl sm:rounded-r-none"
                     required
                 />
 
@@ -99,7 +102,9 @@ const TaskSearchForm: React.FC<TaskSearchFormProps> = ({
                     value={oabUf}
                     title='Unidade Federativa'
                     onChange={(e) => setOabUf(e.target.value.toUpperCase())}
-                    className="w-full sm:w-1/5 p-1.5 border-none focus:ring-0 text-gray-900 text-left bg-white uppercase text-sm sm:text-base"
+                    // 💡 MODIFICAÇÃO: rounded-xl no mobile. Remove arredondamento no desktop.
+                    // Adicionado w-5/6 mx-auto para padding em mobile, sm:w-1/5 no desktop.
+                    className="w-5/6 mx-auto sm:w-1/5 p-1.5 border-none focus:ring-0 text-gray-900 text-left bg-white uppercase text-sm sm:text-base rounded-xl sm:rounded-none"
                     required
                     maxLength={2}
                 />
@@ -116,7 +121,9 @@ const TaskSearchForm: React.FC<TaskSearchFormProps> = ({
                     placeholder="Data Inicial"
                     value={dataInicial}
                     onChange={(e) => setDataInicial(e.target.value)}
-                    className="w-full sm:flex-1 p-1.5 border-none focus:ring-0 text-left text-gray-900 text-sm sm:text-base"
+                    // 💡 MODIFICAÇÃO: rounded-xl no mobile. Remove arredondamento no desktop.
+                    // Adicionado w-5/6 mx-auto para padding em mobile, sm:w-full sm:flex-1 no desktop.
+                    className="w-5/6 mx-auto sm:w-full sm:flex-1 p-1.5 border-none focus:ring-0 text-left text-gray-900 text-sm sm:text-base rounded-xl sm:rounded-none"
                     max={dataFinal}
                     required
                 />
@@ -127,7 +134,9 @@ const TaskSearchForm: React.FC<TaskSearchFormProps> = ({
                     placeholder="Data Final"
                     value={dataFinal}
                     onChange={(e) => setDataFinal(e.target.value)}
-                    className="w-full sm:flex-1 p-1.5 border-none focus:ring-0 rounded-r-2xl text-left text-gray-900 text-sm sm:text-base"
+                    // 💡 MODIFICAÇÃO: rounded-xl no mobile. Mantém flex-1 e arredondamento lateral no desktop.
+                    // Adicionado w-5/6 mx-auto para padding em mobile, sm:w-full sm:flex-1 no desktop.
+                    className="w-5/6 mx-auto sm:w-full sm:flex-1 p-1.5 border-none focus:ring-0 text-left text-gray-900 text-sm sm:text-base rounded-xl sm:rounded-r-2xl sm:rounded-l-none"
                     min={dataInicial}
                     required
                 />

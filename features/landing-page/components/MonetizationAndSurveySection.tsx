@@ -5,7 +5,7 @@ import { MessageSquare } from 'lucide-react';
 import { GOOGLE_SHADOW, GOOGLE_BLUE } from '../data'; 
 
 const MonetizationAndSurveySection: React.FC = () => (
-    <section className="py-16 bg-white border-t border-gray-200">
+    <section className="py-8 bg-white border-t border-gray-200">
         <div className="max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-8">
             
             {/* 1. Área de Propaganda (Monetização) */}

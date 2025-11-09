@@ -5,7 +5,7 @@ import { Star } from 'lucide-react';
 import { GOOGLE_SHADOW, DEPOIMENTOS } from '../data'; 
 
 const TestimonialsSection: React.FC = () => (
-    <section className="py-16 bg-gray-50 border-t border-gray-200">
+    <section className="py-8 bg-gray-50 border-t border-gray-200">
         <div className="max-w-6xl mx-auto px-4">
             <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">
                 O que dizem nossos usuários

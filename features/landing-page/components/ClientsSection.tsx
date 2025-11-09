@@ -68,7 +68,7 @@ const ClientsSection: React.FC = () => {
 
 
     return (
-        <section className="py-16 bg-gray-50 border-t border-b border-gray-100">
+        <section className="py-8 bg-gray-50 border-t border-b border-gray-100">
             <div className="max-w-7xl mx-auto px-6 text-center">
                 <h2 className={TITLE_STYLES}>
                     Advogados e Escritórios que Confiam em Nós
