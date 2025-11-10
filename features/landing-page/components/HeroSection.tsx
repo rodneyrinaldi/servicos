@@ -19,10 +19,10 @@ const HeroSection: React.FC = () => (
         <section className="py-6 md:py-12 bg-white">
             <div className="max-w-4xl mx-auto px-4 text-center">  
                 {/* Título Principal */}
-                <h1 className="text-lg sm:text-5xl font-extrabold text-gray-900 leading-tight">
+                <h1 className="text-lg sm:text-3xl font-extrabold text-gray-900 leading-tight">
                     Serviços <span className={GOOGLE_BLUE}>Advocatícios</span>
                 </h1>
-                <p className="mt-4 text-lg text-gray-600 max-w-3xl mx-auto">
+                <p className="mt-2 text-lg text-gray-600 max-w-3xl mx-auto">
                     Sincronizações, comunicações judiciais, diversos serviços de automação.
                 </p>
 

@@ -176,7 +176,7 @@ const TaskSearchForm: React.FC<TaskSearchFormProps> = ({
                         </p>
                     </a> 
                     <p className="mt-1 text-xs text-center text-gray-400">
-                        RRS Rodney Rinaldi Soluções - Notificações PJe
+                        Task Pilot | Notificações PJe
                     </p>
                 </div>
             )}
