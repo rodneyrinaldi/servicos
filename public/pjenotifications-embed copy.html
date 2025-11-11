@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Widget PJe Guia Rápido de Integração</title>
+    
+    <style>
+        /* Estilos base para o formato eBook */
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f8f8;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #1a73e8; /* Azul primário (Google Blue) */
+            border-bottom: 3px solid #f0f0f0;
+            padding-bottom: 10px;
+            font-size: 2em;
+        }
+        h2 {
+            color: #333;
+            margin-top: 30px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 5px;
+            font-size: 1.5em;
+        }
+        h3 {
+            color: #555;
+            margin-top: 20px;
+            font-size: 1.2em;
+        }
+        code {
+            background-color: #f0f0f0; /* Fundo claro para código inline */
+            color: #c2185b; /* Cor de destaque para texto de código */
+            padding: 2px 4px;
+            border-radius: 4px;
+            font-family: Consolas, monospace;
+            font-size: 0.9em;
+        }
+        /* 🚨 CORREÇÃO: Bloco de Código com Fundo Claro */
+        pre {
+            background-color: #f7f7ff; /* Fundo muito claro (Quase branco/azul claro) */
+            color: #000; /* Texto do código preto ou muito escuro */
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 6px;
+            overflow-x: auto;
+            font-family: Consolas, monospace;
+            margin: 15px 0;
+            white-space: pre-wrap;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #e0e0e0;
+            color: #333;
+        }
+        .endpoint-box {
+            background-color: #e6f7ff;
+            border-left: 5px solid #1a73e8;
+            padding: 15px;
+            margin: 15px 0;
+            font-weight: bold;
+        }
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px dashed #ccc;
+            text-align: center;
+            font-size: 0.9em;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <h1>Guia Rápido de Integração do Widget PJE</h1>
+    <p style="font-style: italic; color: #777;">Serviços.Adv.Br Automação Jurídica</p>
+    <p><strong>Edição: 1.0</strong></p>
+    <p>Desenvolvido por: servicos.adv.br</p>
+
+    <hr style="margin: 20px 0;">
+
+    <h2>1. Introdução: O Que é Este Guia?</h2>
+    <p>Este documento é destinado a desenvolvedores de <em>front-end</em> e líderes técnicos. Ele fornece as instruções precisas e o código necessário para integrar o <strong>Widget de Pesquisa Task Pilot</strong> em qualquer site ou plataforma web.</p>
+    <p>A integração é realizada de forma segura e isolada usando um <code>&lt;iframe&gt;</code>, garantindo que não haverá conflitos de estilos (CSS) ou scripts (JavaScript) com seu ambiente existente.</p>
+
+    <h2>2. Visão Geral da Integração (O <code>&lt;iframe&gt;</code>)</h2>
+    <p>O widget é entregue como um recurso *Cross-Origin* (Origem Cruzada) e precisa ser carregado via <code>&lt;iframe&gt;</code>.</p>
+
+    <h3>2.1. Requisito de Endpoint</h3>
+    <p>O URL de produção do seu widget é o seguinte:</p>
+    <div class="endpoint-box">
+        Endpoint do Widget: <code>https://servicos.adv.br/widget/embed</code>
+    </div>
+
+    <h3>2.2. O Bloco HTML Base</h3>
+    <p>Insira o seguinte código no <code>&lt;body&gt;</code> da sua página, no local onde o widget deve aparecer.</p>
+
+<pre><code>&lt;!-- Início do Widget Task Pilot: Bloco de Embed --&gt;
+&lt;div class="task-pilot-embed-container"&gt;
+    &lt;iframe 
+        src="https://servicos.adv.br/widget/embed" 
+        title="Pesquisa de Prazos Judiciais e Comunicações"
+        frameborder="0" 
+        allowfullscreen
+        id="task-pilot-iframe"
+    &gt;&lt;/iframe&gt;
+&lt;/div&gt;
+&lt;!-- Fim do Widget Task Pilot --&gt;</code></pre>
+
+    <h2>3. Estilização Essencial (CSS)</h2>
+    <p>Para garantir que o <code>&lt;iframe&gt;</code> seja responsivo e tenha o tamanho ideal para acomodar o formulário e os resultados, você <strong>deve</strong> incluir as regras CSS a seguir na sua folha de estilos global.</p>
+
+<pre><code>/* Estilos Críticos para o Widget Task Pilot */
+
+/* Contêiner: Define o tamanho máximo e centraliza */
+.task-pilot-embed-container {
+    max-width: 600px; /* Largura ideal para formulários */
+    margin: 0 auto; /* Centralização automática */
+    padding: 10px; 
+}
+
+/* iFrame: Configurações de altura e responsividade */
+.task-pilot-embed-container iframe {
+    /* Ocupa 100% da largura do contêiner */
+    width: 100%; 
+    
+    /* Altura fixa para acomodar a busca + resultados iniciais. Ajuste conforme necessário. */
+    height: 500px; 
+    
+    /* Limpeza visual e efeitos */
+    border: none;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1); /* Sombra suave opcional */
+    border-radius: 8px; /* Cantos arredondados opcional */
+}</code></pre>
+
+    <h2>4. Notas do Desenvolvedor</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Aspecto</th>
+                <th>Detalhe Técnico</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Isolamento</strong></td>
+                <td>O uso do <code>&lt;iframe&gt;</code> garante que o CSS, fontes e lógica JavaScript do widget não afetarão seu site.</td>
+            </tr>
+            <tr>
+                <td><strong>Comunicação</strong></td>
+                <td>Não há necessidade de comunicação via <code>window.postMessage</code>, pois todo o ciclo de busca e visualização de resultados ocorre dentro do *frame*.</td>
+            </tr>
+            <tr>
+                <td><strong>Segurança</strong></td>
+                <td>O widget é carregado de <code>https://servicos.adv.br</code> via HTTPS.</td>
+            </tr>
+            <tr>
+                <td><strong>Performance</strong></td>
+                <td>O widget é leve e assíncrono. Sua aplicação principal não será bloqueada pelo carregamento do <code>&lt;iframe&gt;</code>.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>5. Suporte Técnico</h2>
+    <p>Para dúvidas, feedback ou suporte técnico avançado sobre a integração, entre em contato com a equipe de desenvolvimento da Task Pilot.</p>
+    <ul>
+        <li><strong>Email de Suporte: </strong> contato@rodneyrinaldi.com.br</li>
+        <li><strong>Site:</strong> <a href="https://servicos.adv.br" target="_blank">https://servicos.adv.br</a></li> </ul>
+
+    <div class="footer">
+        Serviços.Adv.Br - Tecnologia que trabalha para você.
+    </div>
+
+</div>
+
+</body>
+</html>

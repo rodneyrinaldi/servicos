@@ -3,196 +3,274 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guia Rápido de Integração - Widget PJE</title>
+    <title>Integração Task Pilot PJE: Guia Rápido</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     
     <style>
-        /* Estilos base para o formato eBook */
+        /* Paleta Minimalista & Neutra */
+        :root {
+            --color-primary: #007bff; /* Azul primário suave */
+            --color-secondary: #28a745; /* Verde de sucesso */
+            --color-background: #ffffff;
+            --color-text: #333333;
+            --color-light-bg: #f8f9fa;
+            --color-code-bg: #f4f6f9;
+            --color-code-text: #d63384; /* Rosa/Roxo para sintaxe */
+        }
+        
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Inter', sans-serif; /* Fonte limpa e moderna */
             line-height: 1.6;
-            color: #333;
-            background-color: #f8f8f8;
-            padding: 20px;
+            color: var(--color-text);
+            background-color: var(--color-light-bg);
+            padding: 0;
+            margin: 0;
         }
         .container {
             max-width: 800px;
-            margin: 0 auto;
-            background-color: #fff;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            margin: 30px auto;
+            background-color: var(--color-background);
+            padding: 40px 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+        
+        /* 🖼️ ESTRUTURA DO TOPO (Centralizada) */
+        .top-section {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .logo {
+            max-width: 280px; /* Aumento de 40% (200px -> 280px) */
+            height: auto;
+            margin-bottom: 15px;
         }
         h1 {
-            color: #1a73e8; /* Azul primário (Google Blue) */
-            border-bottom: 3px solid #f0f0f0;
-            padding-bottom: 10px;
-            font-size: 2em;
+            color: var(--color-primary);
+            font-weight: 700;
+            font-size: 1.8em;
+            margin-top: 0;
+            margin-bottom: 5px;
         }
+
+        /* 📝 TIPOGRAFIA & ESTILOS */
         h2 {
-            color: #333;
-            margin-top: 30px;
-            border-bottom: 1px solid #ddd;
-            padding-bottom: 5px;
-            font-size: 1.5em;
+            color: var(--color-text);
+            font-weight: 700;
+            margin-top: 40px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--color-primary);
+            font-size: 1.4em;
         }
         h3 {
-            color: #555;
-            margin-top: 20px;
-            font-size: 1.2em;
+            color: var(--color-primary);
+            font-weight: 600;
+            margin-top: 25px;
+            font-size: 1.1em;
         }
+        
+        /* 💻 CÓDIGO & DESTAQUES */
         code {
-            background-color: #f0f0f0; /* Fundo claro para código inline */
-            color: #c2185b; /* Cor de destaque para texto de código */
-            padding: 2px 4px;
-            border-radius: 4px;
-            font-family: Consolas, monospace;
+            background-color: var(--color-code-bg);
+            color: var(--color-code-text);
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-family: 'Consolas', monospace;
             font-size: 0.9em;
         }
-        /* 🚨 CORREÇÃO: Bloco de Código com Fundo Claro */
         pre {
-            background-color: #f7f7ff; /* Fundo muito claro (Quase branco/azul claro) */
-            color: #000; /* Texto do código preto ou muito escuro */
-            border: 1px solid #ddd;
+            background-color: var(--color-code-bg);
+            color: var(--color-text);
+            border: 1px solid #e9ecef;
             padding: 15px;
             border-radius: 6px;
             overflow-x: auto;
-            font-family: Consolas, monospace;
-            margin: 15px 0;
-            white-space: pre-wrap;
+            font-family: 'Consolas', monospace;
+            margin: 20px 0;
+            font-size: 0.85em;
         }
+        
+        /* 📦 CAIXAS DE ALERTA CORRIGIDAS */
+        .alert-box {
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+            font-size: 0.95em;
+        }
+        .alert-info {
+            background-color: #e6f7ff;
+            border-left: 5px solid var(--color-primary);
+            color: #0056b3;
+            padding-left: 20px; /* Ajuste para não grudar no texto */
+        }
+        .alert-success {
+            background-color: #e2fce4;
+            border-left: 5px solid var(--color-secondary);
+            color: #155724;
+            font-weight: 600;
+            padding-left: 20px; /* Ajuste para não grudar no texto */
+        }
+
+        /* 🗃️ TABELA (Clean) */
         table {
             width: 100%;
             border-collapse: collapse;
-            margin: 20px 0;
+            margin: 25px 0;
         }
         th, td {
-            border: 1px solid #ddd;
-            padding: 10px;
+            border-bottom: 1px solid #e0e0e0;
+            padding: 10px 12px;
             text-align: left;
         }
         th {
-            background-color: #e0e0e0;
-            color: #333;
+            background-color: var(--color-primary);
+            color: var(--color-background);
+            font-weight: 600;
+            border: none;
         }
-        .endpoint-box {
-            background-color: #e6f7ff;
-            border-left: 5px solid #1a73e8;
-            padding: 15px;
-            margin: 15px 0;
-            font-weight: bold;
+        tr:last-child td {
+            border-bottom: none;
         }
+        
+        /* 🦶 RODAPÉ */
         .footer {
             margin-top: 40px;
-            padding-top: 20px;
+            padding-top: 15px;
             border-top: 1px dashed #ccc;
             text-align: center;
-            font-size: 0.9em;
-            color: #777;
+            font-size: 0.8em;
+            color: #888;
+        }
+        
+        /* ÍCONES inline (mantidos caso necessário, mas não usados em H2) */
+        .material-icons-inline {
+            font-size: 1.2em;
+            vertical-align: middle;
+            margin-right: 5px;
+            color: var(--color-secondary);
         }
     </style>
 </head>
 <body>
 
 <div class="container">
-
-    <h1>Guia Rápido de Integração do Widget PJE</h1>
-    <p style="font-style: italic; color: #777;">Serviços.Adv.Br Automação Jurídica</p>
-    <p><strong>Edição: 1.0</strong></p>
-    <p>Desenvolvido por: servicos.adv.br</p>
-
-    <hr style="margin: 20px 0;">
-
-    <h2>1. Introdução: O Que é Este Guia?</h2>
-    <p>Este documento é destinado a desenvolvedores de <em>front-end</em> e líderes técnicos. Ele fornece as instruções precisas e o código necessário para integrar o <strong>Widget de Pesquisa Task Pilot</strong> em qualquer site ou plataforma web.</p>
-    <p>A integração é realizada de forma segura e isolada usando um <code>&lt;iframe&gt;</code>, garantindo que não haverá conflitos de estilos (CSS) ou scripts (JavaScript) com seu ambiente existente.</p>
-
-    <h2>2. Visão Geral da Integração (O <code>&lt;iframe&gt;</code>)</h2>
-    <p>O widget é entregue como um recurso *Cross-Origin* (Origem Cruzada) e precisa ser carregado via <code>&lt;iframe&gt;</code>.</p>
-
-    <h3>2.1. Requisito de Endpoint</h3>
-    <p>O URL de produção do seu widget é o seguinte:</p>
-    <div class="endpoint-box">
-        Endpoint do Widget: <code>https://servicos.adv.br/widget/embed</code>
+    
+    <div class="top-section">
+        <img src="./images/logo-taskpilot.png" alt="Logo Task Pilot" class="logo">
+        <h1>GUIA DE INTEGRAÇÃO DO WIDGET TASK PILOT PJE</h1>
+        <p style="color: #6c757d; font-size: 0.9em;">Documentação Técnica Rápida e Minimalista | Serviços.Adv.Br</p>
     </div>
 
-    <h3>2.2. O Bloco HTML Base</h3>
-    <p>Insira o seguinte código no <code>&lt;body&gt;</code> da sua página, no local onde o widget deve aparecer.</p>
+    <hr>
 
-<pre><code>&lt;!-- Início do Widget Task Pilot: Bloco de Embed --&gt;
+    <h2>1. Entendendo a Solução</h2>
+    <p>Este guia foi elaborado para que você, <strong>desenvolvedor</strong> ou <strong>gestor técnico</strong>, possa integrar o <strong>Widget de Pesquisa Task Pilot</strong> em sua plataforma web de maneira simples, rápida e segura.</p>
+    
+    <p>Utilizamos a técnica de <strong><code>&lt;iframe&gt;</code></strong> para garantir o <strong>isolamento total</strong>. Isso significa que a interface, o CSS e os scripts do nosso Widget não irão colidir com os estilos ou a lógica da sua aplicação principal. </p>
+
+    <div class="alert-info">
+        <strong>Para leigos:</strong> O <code>&lt;iframe&gt;</code> é como uma "janela" dentro da sua página que carrega um site externo (nosso widget) de forma independente. Sua página e nosso widget não "conversam" em termos de design ou código, garantindo a estabilidade.
+    </div>
+
+    <hr>
+
+    <h2>2. Implementação: O Bloco HTML</h2>
+    
+    <h3>2.1. O Endpoint (URL)</h3>
+    <p>O widget é um recurso de *Origem Cruzada* e deve ser acessado pelo seguinte endereço HTTPS. Este é o único link que você precisará incorporar:</p>
+    <div class="alert-success">
+        <span class="material-icons-inline" style="color: #155724;">check_circle</span> <strong>URL de Produção do Widget:</strong> <code>https://servicos.adv.br/widget/embed</code>
+    </div>
+
+    <h3>2.2. Inserção do Código</h3>
+    <p>Copie e cole o bloco de código abaixo no <code>&lt;body&gt;</code> da sua página, no local exato onde o formulário de pesquisa do widget deve aparecer.</p>
+
+<pre><code>&lt;!-- Início do Bloco Task Pilot Widget --&gt;
 &lt;div class="task-pilot-embed-container"&gt;
     &lt;iframe 
         src="https://servicos.adv.br/widget/embed" 
-        title="Pesquisa de Prazos Judiciais e Comunicações"
+        title="Pesquisa de Prazos Judiciais e Comunicações PJE"
         frameborder="0" 
         allowfullscreen
         id="task-pilot-iframe"
     &gt;&lt;/iframe&gt;
 &lt;/div&gt;
-&lt;!-- Fim do Widget Task Pilot --&gt;</code></pre>
+&lt;!-- Fim do Bloco Task Pilot Widget --&gt;</code></pre>
 
-    <h2>3. Estilização Essencial (CSS)</h2>
-    <p>Para garantir que o <code>&lt;iframe&gt;</code> seja responsivo e tenha o tamanho ideal para acomodar o formulário e os resultados, você <strong>deve</strong> incluir as regras CSS a seguir na sua folha de estilos global.</p>
+    <hr>
 
-<pre><code>/* Estilos Críticos para o Widget Task Pilot */
+    <h2>3. Estilização: Configuração do CSS</h2>
+    <p>Para garantir que o Widget seja <strong>responsivo</strong> e tenha o tamanho ideal para a visualização, é <strong>obrigatório</strong> aplicar as seguintes regras CSS na sua folha de estilos global.</p>
 
-/* Contêiner: Define o tamanho máximo e centraliza */
+    <div class="alert-info">
+        <span class="material-icons-inline" style="color: #0056b3;">warning</span> <strong>Atenção à Altura:</strong> A propriedade <code>height: 500px</code> é um valor sugerido para exibir o formulário e resultados iniciais. Você <strong>deve</strong> ajustar este valor (em pixels ou usando <code>min-height</code>) conforme o design e a área disponível da sua página.
+    </div>
+
+<pre><code>/* Estilos Essenciais para o Task Pilot Widget */
+
+/* 1. Contêiner: Define a largura máxima */
 .task-pilot-embed-container {
     max-width: 600px; /* Largura ideal para formulários */
-    margin: 0 auto; /* Centralização automática */
+    margin: 0 auto;   /* Centralização horizontal */
     padding: 10px; 
 }
 
-/* iFrame: Configurações de altura e responsividade */
+/* 2. iFrame: Configurações de exibição e responsividade */
 .task-pilot-embed-container iframe {
-    /* Ocupa 100% da largura do contêiner */
+    /* 100% da largura do contêiner */
     width: 100%; 
     
-    /* Altura fixa para acomodar a busca + resultados iniciais. Ajuste conforme necessário. */
+    /* Altura fixa mínima (ajuste necessário) */
     height: 500px; 
     
-    /* Limpeza visual e efeitos */
+    /* Toques de design */
     border: none;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1); /* Sombra suave opcional */
-    border-radius: 8px; /* Cantos arredondados opcional */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1); 
+    border-radius: 6px; 
 }</code></pre>
 
-    <h2>4. Notas do Desenvolvedor</h2>
+    <hr>
+
+    <h2>4. Notas Técnicas Avançadas</h2>
 
     <table>
         <thead>
             <tr>
                 <th>Aspecto</th>
-                <th>Detalhe Técnico</th>
+                <th>Detalhe Técnico Importante</th>
             </tr>
         </thead>
         <tbody>
             <tr>
                 <td><strong>Isolamento</strong></td>
-                <td>O uso do <code>&lt;iframe&gt;</code> garante que o CSS, fontes e lógica JavaScript do widget não afetarão seu site.</td>
+                <td>O uso do <code>&lt;iframe&gt;</code> elimina 100% dos conflitos de CSS, JavaScript e bibliotecas (como jQuery ou React) entre seu site e o Widget.</td>
             </tr>
             <tr>
                 <td><strong>Comunicação</strong></td>
-                <td>Não há necessidade de comunicação via <code>window.postMessage</code>, pois todo o ciclo de busca e visualização de resultados ocorre dentro do *frame*.</td>
+                <td>O ciclo completo de pesquisa e visualização é autocontido. Não é necessário implementar a comunicação complexa via <code>window.postMessage</code>.</td>
             </tr>
             <tr>
                 <td><strong>Segurança</strong></td>
-                <td>O widget é carregado de <code>https://servicos.adv.br</code> via HTTPS.</td>
+                <td>Carregamento exclusivamente via <strong>HTTPS</strong> (criptografado) do domínio <code>servicos.adv.br</code>.</td>
             </tr>
             <tr>
                 <td><strong>Performance</strong></td>
-                <td>O widget é leve e assíncrono. Sua aplicação principal não será bloqueada pelo carregamento do <code>&lt;iframe&gt;</code>.</td>
+                <td>O Widget é carregado de forma <strong>assíncrona</strong>. Ele não atrasa o *render* e o carregamento dos elementos principais da sua página.</td>
             </tr>
         </tbody>
     </table>
 
+    <hr>
+    
     <h2>5. Suporte Técnico</h2>
-    <p>Para dúvidas, feedback ou suporte técnico avançado sobre a integração, entre em contato com a equipe de desenvolvimento da Task Pilot.</p>
+    <p>Em caso de dúvidas técnicas ou necessidade de auxílio na implementação, entre em contato com nossa equipe de desenvolvimento.</p>
     <ul>
-        <li><strong>Email de Suporte: </strong> contato@rodneyrinaldi.com.br</li>
+        <li><strong>E-mail:</strong> <a href="mailto:contato@rodneyrinaldi.com.br">contato@rodneyrinaldi.com.br</a></li>
         <li><strong>Site:</strong> <a href="https://servicos.adv.br" target="_blank">https://servicos.adv.br</a></li> </ul>
 
     <div class="footer">
-        Serviços.Adv.Br - Tecnologia que trabalha para você.
+        Task Pilot by Serviços.Adv.Br | Tecnologia que trabalha para você. | &copy; 2025
     </div>
 
 </div>
