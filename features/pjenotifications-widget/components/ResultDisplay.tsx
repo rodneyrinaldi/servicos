@@ -3,12 +3,43 @@ import React from 'react';
 import { Loader2, AlertTriangle, CalendarCheck } from 'lucide-react';
 
 // 1. Importação de Tipos Globais
-// Caminho ajustado: Sai de features/search-widget/components (../..), e entra em /types/
 import { ProcessoResumo } from '../../../types'; 
 
 // 2. Importação de Tipos Locais da Feature
-// Caminho ajustado: Volta um nível (.) para o types.ts dentro de features/search-widget/
 import { SearchState } from '../types'; 
+
+// 3. ✨ FUNÇÃO AUXILIAR PARA DESTAQUE PARCIAL (inalterada)
+/**
+ * Quebra a string de descrição e destaca a substring "prazo de" em vermelho.
+ * @param description A string de descrição do processo.
+ * @returns Um array de elementos React para renderização.
+ */
+const highlightDescription = (description: string): React.ReactNode[] => {
+    const keyword = "prazo de";
+    const parts = description.split(new RegExp(`(${keyword})`, 'gi'));
+    const nodes: React.ReactNode[] = [];
+
+    parts.forEach((part, index) => {
+        // Verifica se a parte atual corresponde à keyword, ignorando maiúsculas/minúsculas.
+        if (part.toLowerCase() === keyword) {
+            // Se for a keyword, aplica o destaque (vermelho e branco)
+            nodes.push(
+                <span 
+                    key={`highlight-${index}`} 
+                    className="bg-red-600 text-white font-bold px-1 rounded mx-0.5 whitespace-nowrap"
+                >
+                    {part}
+                </span>
+            );
+        } else {
+            // Se não for a keyword, mantém a parte como texto normal
+            nodes.push(<React.Fragment key={index}>{part}</React.Fragment>);
+        }
+    });
+
+    return nodes;
+};
+
 
 interface ResultDisplayProps {
     state: SearchState;
@@ -49,13 +80,17 @@ const ResultDisplay: React.FC<ResultDisplayProps> = ({ state, results, errorMsg 
                         <CalendarCheck className="w-5 h-5 mr-2 fill-green-500 text-white" />
                         <span>{results.length} Prazos Encontrados:</span>
                     </div>
-                    {/* AQUI ESTÁ A ALTERAÇÃO: Removidas as classes max-h-60 e overflow-y-auto */}
+                    {/* Mantida a remoção das classes max-h-60 e overflow-y-auto */}
                     <ul className="space-y-3 pr-2"> 
                         {results.map((p, index) => (
                             <li key={index} className="p-3 bg-white border border-gray-200 rounded-lg shadow-sm text-sm">
                                 <span className="font-semibold text-gray-800 mr-2">{p.data}</span>
                                 <span className="text-gray-600 block sm:inline">{p.numero}</span>
-                                <span className="text-gray-500 text-xs block mt-1">{p.descricao}</span>
+                                
+                                {/* 🎯 ALTERAÇÃO: Adicionada a classe text-justify */}
+                                <span className="text-gray-500 text-xs block mt-1 text-justify">
+                                    {highlightDescription(p.descricao)}
+                                </span>
                             </li>
                         ))}
                     </ul>
