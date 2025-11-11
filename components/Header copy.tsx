@@ -41,13 +41,14 @@ const Header: React.FC = () => {
 
 
     return (
-        <header
-            className={`
-                sticky top-0 z-50 transition-all duration-300 ease-in-out
-                ${headerHeightClass} /* H-16 no mobile. H-32 no desktop SE NÃO estiver rolado. */
-                ${scrolled ? headerBackgroundScrolled : headerBackgroundInitial}
-            `}
-        >
+        <header>
+            <div
+                className={`
+                    sticky top-0 z-50 transition-all duration-300 ease-in-out
+                    ${headerHeightClass} /* H-16 no mobile. H-32 no desktop SE NÃO estiver rolado. */
+                    ${scrolled ? headerBackgroundScrolled : headerBackgroundInitial}
+                `}
+            />
             <div 
                 className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center justify-between"
             >

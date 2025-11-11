@@ -46,6 +46,7 @@ const Header: React.FC = () => {
                 ${scrolled ? headerBackgroundScrolled : headerBackgroundInitial}
             `}
         >
+            <link rel="icon" href="/favicon.ico" sizes="any" />
             <div 
                 className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center justify-between"
             >
